@@ -36,8 +36,15 @@ function showPosition(position) {
 // add event listener to removeLocation button
 removeLocationBtn.addEventListener('click', () => {
   // remove latitude and longitude from local storage
-  localStorage.removeItem('lat');
+  
+  if(localStorage.getItem('lat')||localStorage.getItem('long')){
+    localStorage.removeItem('lat');
   localStorage.removeItem('long');
+}
+
+else{
+    alert('No location in Local Storage');
+}
   // enable getLocation button and remove map
   getLocationBtn.disabled = false;
   mapDiv.innerHTML = '';
